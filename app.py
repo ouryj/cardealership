@@ -4,6 +4,7 @@ import plotly_express as px
 # reading the data file
 
 df = pd.read_csv('vehicles_us.csv')
+df = df.transform(lambda x: x.fillna(x.mode()[0]))
 # setting a header for the app
 st.header("Used Cars Dealership")
 # setting a minimun and maximum price for viewing
