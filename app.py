@@ -13,12 +13,12 @@ upper = df['price'].quantile(0.97)
 disregard_outliers = st.checkbox('No outliers in price Distribution')
 
 if disregard_outliers:
-    filtered_df = df[(df['price'] >= lower & df['price'] <= upper)]
+    filtered_df = df[(df['price'] >= lower) & (df['price'] <= upper)]
 else:
     filtered_df = df
 
 #creating a histogram
-hist = px.histogram(filtered_df, x='price',title='Price Distribution', color_discrete_sequence=['blue'])
+hist = px.histogram(filtered_df, x='price',title='Price Distribution', color_discrete_sequence=['blue'],nbins=50)
 if st.checkbox("View Data through a histogram"):
     st.plotly_chart(hist)
 
